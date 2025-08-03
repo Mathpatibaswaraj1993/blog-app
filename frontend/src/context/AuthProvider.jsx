@@ -3,6 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
+const token = localStorage.getItem("token");
 
 export const AuthProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([]);
@@ -34,7 +35,12 @@ export const AuthProvider = ({ children }) => {
       try {
         const response = await axios.get(
           "https://blog-app-u13f.onrender.com/api/blogs/all-blogs",
-          { withCredentials: true }
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              withCredentials: true,
+            },
+          }
         );
         console.log("Blogs API Response:", response.data);
         setBlogs(Array.isArray(response.data.blogs) ? response.data.blogs : []);
