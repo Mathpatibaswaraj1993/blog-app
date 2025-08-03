@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/blogs/all-blogs",
+          "https://blog-app-u13f.onrender.com/api/blogs/all-blogs",
           { withCredentials: true }
         );
         console.log("Blogs API Response:", response.data);
