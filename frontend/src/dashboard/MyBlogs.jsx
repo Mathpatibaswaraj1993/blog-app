@@ -8,11 +8,10 @@ function MyBlogs() {
   const navigate = useNavigate(); // ✅ initialize navigate
   const api = import.meta.env.VITE_API_URL;
 
-
   useEffect(() => {
     const fetchMyBlogs = async () => {
       try {
-        const { data } = await axios.get(`${api}/api/blogs/my-blog/`, {
+        const { data } = await axios.get(`${api}/api/blogs/my-blog`, {
           withCredentials: true,
         });
         setMyBlogs(Array.isArray(data) ? data : data.blogs || []);
@@ -26,12 +25,9 @@ function MyBlogs() {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:5000/api/blogs/delete/${id}`,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.delete(`${api}/api/blogs/delete/${id}`, {
+        withCredentials: true,
+      });
       toast.success(res.data.message || "Blog deleted Successfully!!");
       setMyBlogs((prev) => prev.filter((blog) => blog._id !== id));
     } catch (error) {
@@ -83,7 +79,7 @@ function MyBlogs() {
               <div className="mt-4 flex justify-center space-x-4 bg-teal-500">
                 <Link
                   to={`/update/${element._id}`}
-                  className="text-white bg-green-600 bg- rounded-md shadow px-4 py-1 border border-gray-600 hover:underline"
+                  className="text-white bg-green-600 rounded-md shadow px-4 py-1 border border-gray-600 hover:underline"
                 >
                   UPDATE
                 </Link>

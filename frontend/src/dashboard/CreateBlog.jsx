@@ -54,7 +54,7 @@ function CreateBlog() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
         <form onSubmit={handleCreateBlog}>
           <div className="font-semibold text-xl text-center mb-2">
@@ -100,6 +100,7 @@ function CreateBlog() {
               </div>
             )}
             <input
+              key={blogImagePreview}
               type="file"
               accept="image/*"
               onChange={changePhotoHandler}
