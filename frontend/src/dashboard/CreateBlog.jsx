@@ -11,7 +11,6 @@ function CreateBlog() {
   const [blogImagePreview, setBlogImagePreview] = useState("");
   const api = import.meta.env.VITE_API_URL;
 
-
   const changePhotoHandler = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -26,7 +25,6 @@ function CreateBlog() {
 
   const handleCreateBlog = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
     const formData = new FormData();
     formData.append("title", title);
     formData.append("category", category);
@@ -36,8 +34,6 @@ function CreateBlog() {
     try {
       const response = await axios.post(`${api}/api/blogs/create`, formData, {
         headers: {
-          Authorization: `Bearer ${token}`,
-
           "Content-Type": "multipart/form-data",
         },
         withCredentials: true,
