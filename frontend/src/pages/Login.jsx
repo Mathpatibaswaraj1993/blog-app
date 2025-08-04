@@ -5,15 +5,17 @@ import { data, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthProvider";
+const api = import.meta.env.VITE_API_URL;
 
 function Login() {
+  console.log(api);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
   const { isAuthenticated, setIsAuthenticated, profile, setProfile } =
     useAuth();
-  const api = import.meta.env.VITE_API_URL;
 
   const navigateTo = useNavigate();
 
@@ -25,7 +27,7 @@ function Login() {
     }
     try {
       const { data } = await axios.post(
-        `https://blog-app-u13f.onrender.com/api/users/login`,
+        `${api}/api/users/login`,
         { email, password, role },
         {
           withCredentials: true,
