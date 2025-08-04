@@ -29,8 +29,7 @@ node_modules/
 dist/
 build/
 
-# Ignore environment files
-.env
+# Ignore environment file
 .env.local
 
 # ✅ Ignore temp folder
