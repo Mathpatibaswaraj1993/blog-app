@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
 
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${api}/api/blogs/all-blogs`, {
+        const response = await axios.get(`${api}/api/blogs/all-blogs/`, {
           headers: {
             Authorization: `Bearer ${token}`,
             withCredentials: true,
