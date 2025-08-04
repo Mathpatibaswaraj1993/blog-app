@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 const token = localStorage.getItem("token");
+const api = import.meta.env.VITE_API_URL;
+
 
 export const AuthProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([]);
@@ -14,7 +16,7 @@ export const AuthProvider = ({ children }) => {
     const fetchProfile = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/api/users/my-profile",
+          `${api}/api/users/my-profile`,
           {
             withCredentials: true,
             headers: {
@@ -33,15 +35,12 @@ export const AuthProvider = ({ children }) => {
 
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(
-          "https://blog-app-u13f.onrender.com/api/blogs/all-blogs",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              withCredentials: true,
-            },
-          }
-        );
+        const response = await axios.get(`${api}/api/blogs/all-blogs`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            withCredentials: true,
+          },
+        });
         console.log("Blogs API Response:", response.data);
         setBlogs(Array.isArray(response.data.blogs) ? response.data.blogs : []);
       } catch (error) {

@@ -7,14 +7,15 @@ function Detail() {
   const { id } = useParams();
   const [blogs, setBlogs] = useState({});
   const navigate = useNavigate(); // ✅ initialize navigate
+  const api = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/api/blogs/single-blog/${id}`,
-          { withCredentials: true }
-        );
+        const { data } = await axios.get(`${api}/api/blogs/single-blog/${id}`, {
+          withCredentials: true,
+        });
         console.log("Fetched blog:", data);
         console.log("Admin photo URL:", data?.adminPhoto);
         setBlogs(data);

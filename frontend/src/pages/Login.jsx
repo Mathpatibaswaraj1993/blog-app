@@ -12,6 +12,7 @@ function Login() {
   const [role, setRole] = useState("");
 
   const { isAuthenticated, setIsAuthenticated,profile, setProfile } = useAuth();
+  const api = import.meta.env.VITE_API_URL;
 
   const navigateTo = useNavigate();
 
@@ -23,7 +24,7 @@ function Login() {
     }
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/users/login",
+        `${api}/api/users/login`,
         { email, password, role },
         {
           withCredentials: true,

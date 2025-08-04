@@ -10,6 +10,8 @@ function SideBar({ setComponent }) {
   const { profile, isAuthenticated, setIsAuthenticated } = useAuth();
   const navigateTo = useNavigate();
   const [show, setShow] = useState(false);
+  const api = import.meta.env.VITE_API_URL;
+
 
   console.log(profile);
 
@@ -25,10 +27,9 @@ function SideBar({ setComponent }) {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/users/logout",
-        { withCredentials: true }
-      );
+      const { data } = await axios.get(`${api}/api/users/logout`, {
+        withCredentials: true,
+      });
       setIsAuthenticated(false);
       toast.success(data.message || "Logged out successfully");
     } catch (error) {

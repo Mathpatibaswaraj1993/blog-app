@@ -11,14 +11,14 @@ function Navbar() {
   const { profile, isAuthenticated, setIsAuthenticated, setProfile } =
     useAuth();
   const navigate = useNavigate();
+  const api = import.meta.env.VITE_API_URL;
 
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/users/logout",
-        { withCredentials: true }
-      );
+      const { data } = await axios.get(`${api}/api/users/logout`, {
+        withCredentials: true,
+      });
       setIsAuthenticated(false);
       setProfile(null); // ✅ Clear profile after logout
       toast.success(data.message || "Logged out successfully");

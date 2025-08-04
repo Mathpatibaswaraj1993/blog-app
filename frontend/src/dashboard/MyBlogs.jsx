@@ -6,14 +6,15 @@ import toast from "react-hot-toast";
 function MyBlogs() {
   const [myBlogs, setMyBlogs] = useState([]);
   const navigate = useNavigate(); // ✅ initialize navigate
+  const api = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     const fetchMyBlogs = async () => {
       try {
-        const { data } = await axios.get(
-          "http://localhost:5000/api/blogs/my-blog/",
-          { withCredentials: true }
-        );
+        const { data } = await axios.get(`${api}/api/blogs/my-blog/`, {
+          withCredentials: true,
+        });
         setMyBlogs(Array.isArray(data) ? data : data.blogs || []);
       } catch (error) {
         console.log("❌ API Error:", error.response?.data || error.message);

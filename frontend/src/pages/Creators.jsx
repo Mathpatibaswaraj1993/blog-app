@@ -3,12 +3,13 @@ import axios from "axios";
 
 function Creators() {
   const [creators, setCreators] = useState([]); // ✅ lowercase 'creators'
+  const api = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchCreators = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/api/users/admins",
+          `${api}/api/users/admins`,
           {
             withCredentials: true, // ✅ Fixed typo
           }

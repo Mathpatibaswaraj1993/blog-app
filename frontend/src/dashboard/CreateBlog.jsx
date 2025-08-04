@@ -9,6 +9,8 @@ function CreateBlog() {
   const [about, setAbout] = useState("");
   const [blogImage, setBlogImage] = useState("");
   const [blogImagePreview, setBlogImagePreview] = useState("");
+  const api = import.meta.env.VITE_API_URL;
+
 
   const changePhotoHandler = (e) => {
     const file = e.target.files[0];
@@ -32,7 +34,7 @@ function CreateBlog() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/blogs/create",
+        `${api}/api/blogs/create`,
         formData,
         {
           headers: {
