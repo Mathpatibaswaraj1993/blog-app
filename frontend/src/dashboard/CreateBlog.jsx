@@ -26,6 +26,7 @@ function CreateBlog() {
 
   const handleCreateBlog = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     const formData = new FormData();
     formData.append("title", title);
     formData.append("category", category);
@@ -33,16 +34,14 @@ function CreateBlog() {
     formData.append("blogImage", blogImage);
 
     try {
-      const response = await axios.post(
-        `${api}/api/blogs/create`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          withCredentials:true,
-        }
-      );
+      const response = await axios.post(`${api}/api/blogs/create`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      });
 
       toast.success(response.data.message || "Blog created successfully!");
       setTitle("");
