@@ -8,6 +8,11 @@ export const isAuthenticated = async (req, res, next) => {
     console.log("middleware token:", token);
     console.log("Cookies from client:", req.cookies);
     
+    
+console.log("Cookies:", req.cookies);
+console.log("Token:", req.cookies.jwt);
+
+    
 
 
     if (!token) {
