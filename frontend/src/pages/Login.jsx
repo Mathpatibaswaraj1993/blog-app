@@ -11,7 +11,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
-  const { isAuthenticated, setIsAuthenticated,profile, setProfile } = useAuth();
+  const { isAuthenticated, setIsAuthenticated, profile, setProfile } =
+    useAuth();
   const api = import.meta.env.VITE_API_URL;
 
   const navigateTo = useNavigate();
@@ -24,7 +25,7 @@ function Login() {
     }
     try {
       const { data } = await axios.post(
-        `${api}/api/users/login`,
+        `https://blog-app-u13f.onrender.com/api/users/login`,
         { email, password, role },
         {
           withCredentials: true,
