@@ -100,7 +100,6 @@ function CreateBlog() {
               </div>
             )}
             <input
-              key={blogImagePreview}
               type="file"
               accept="image/*"
               onChange={changePhotoHandler}
