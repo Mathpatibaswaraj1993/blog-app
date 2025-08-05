@@ -9,11 +9,8 @@ export const isAuthenticated = async (req, res, next) => {
     console.log("Cookies from client:", req.cookies);
     
     
-console.log("Cookies:", req.cookies);
-console.log("Token:", req.cookies.jwt);
-
-    
-
+      console.log("Cookies:", req.cookies);
+      console.log("Token:", req.cookies.jwt);
 
     if (!token) {
       return res.status(401).json({ error: "User not authenticated" });
