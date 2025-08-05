@@ -32,7 +32,7 @@ function CreateBlog() {
     formData.append("blogImage", blogImage);
 
     try {
-      const response = await axios.post(`${api}/api/blogs/create`, formData, {
+      const response = await axios.post(`${api}/api/blogs/create/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
