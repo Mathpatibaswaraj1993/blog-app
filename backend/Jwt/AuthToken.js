@@ -8,8 +8,8 @@ const createTokenAndSaveCookies = async (userId, res) => {
 
   res.cookie("jwt", token, {
     httpOnly: true,
-    secure: true,
     sameSite: "none",
+    secure: true,
     maxAge:7 * 24 * 60 * 60 * 1000,
  })
 
