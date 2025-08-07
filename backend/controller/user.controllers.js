@@ -125,12 +125,12 @@ export const login = async (req, res) => {
 // LOGOUT
 export const logout = (req, res) => {
   try {
-    res.clearCookie("token", {
+    res.clearCookie("jwt", {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false, // true in production
+      sameSite: "none",
+      secure: true, // true in production
     });
-console.log("Cookies:", req.cookies);
+    console.log("Cookies:", req.cookies);
 
     return res.status(200).json({ message: "User logged out successfully!" });
   } catch (error) {
