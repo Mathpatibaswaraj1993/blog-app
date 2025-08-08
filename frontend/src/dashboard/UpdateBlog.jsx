@@ -69,10 +69,10 @@ function UpdateBlog() {
         `${api}/api/blogs/update/${id}`,
         formData,
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "multipart/form-data",
           },
-          withCredentials: true,
         }
       );
       toast.success(data.message || "Blog updated successfully!");
