@@ -48,7 +48,7 @@ useEffect(() => {
 
   fetchProfile();
   fetchBlogs();
-}, []);
+}, [api]);
 
 
   return (
