@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+const api = import.meta.env.VITE_API_URL;
 
 function UpdateBlog() {
   const navigateTo = useNavigate();
@@ -28,10 +29,9 @@ function UpdateBlog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:5000/api/blogs/single-blog/${id}`,
-          { withCredentials: true }
-        );
+        const { data } = await axios.get(`${api}/api/blogs/single-blog/${id}`, {
+          withCredentials: true,
+        });
         console.log(data);
 
         toast.success(data.message || "Blog fetched successfully!");
@@ -66,7 +66,7 @@ function UpdateBlog() {
 
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/api/blogs/update/${id}`,
+        `${api}/api/blogs/update/${id}`,
         formData,
         {
           headers: {
