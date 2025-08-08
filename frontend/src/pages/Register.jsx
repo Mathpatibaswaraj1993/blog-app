@@ -4,6 +4,7 @@ import { data, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthProvider";
+const api = import.meta.env.VITE_API_URL;
 
 function Register() {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
@@ -42,16 +43,12 @@ function Register() {
     formData.append("photo", photo);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/register",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          method: "POST",
-        }
-      );
+      const response = await axios.post(`${api}/api/users/register`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        method: "POST",
+      });
       console.log(response.data);
 
       toast.success(response.data.message || "User registered successfully!!");
