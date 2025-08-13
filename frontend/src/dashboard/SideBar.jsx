@@ -12,7 +12,6 @@ function SideBar({ setComponent }) {
   const [show, setShow] = useState(false);
   const api = import.meta.env.VITE_API_URL;
 
-
   console.log(profile);
 
   const handleComponents = (value) => {
@@ -68,7 +67,7 @@ function SideBar({ setComponent }) {
             <div className="text-center py-6">
               {profile.photo ? (
                 <img
-                  src={profile.photo?.url?}
+                  src={profile.photo?.url}
                   alt="User Profile"
                   className="w-24 h-24 rounded-full mx-auto mb-2"
                 />
