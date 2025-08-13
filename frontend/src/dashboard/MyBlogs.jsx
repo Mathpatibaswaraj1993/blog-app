@@ -46,7 +46,7 @@ function MyBlogs() {
               className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all overflow-hidden ml-4 py-4"
             >
               {/* Only image/title wrapped in Link */}
-              <Link to={`/blogs/${element._id}`}>
+              <Link to={`/blog/${element._id}`}>
                 <div className="relative h-56 w-full shadow-lg group cursor-pointer">
                   <img
                     src={element?.blogImage?.url || "/fallback.jpg"}
