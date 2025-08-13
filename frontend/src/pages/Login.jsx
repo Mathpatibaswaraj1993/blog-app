@@ -54,17 +54,21 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-500">
-      <div className="w-full max-w-md bg-orange-300 shadow-md rounded-lg p-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+      <div className="w-full max-w-md bg-white shadow-2xl rounded-xl p-10 border border-gray-200">
         <form onSubmit={handleRegister}>
-          <div className="font-semibold text-xl items-center text-center">
-            Cilli<span className="text-blue-500">Blog</span>
+          <div className="font-bold text-3xl text-center mb-6">
+            Cilli<span className="text-indigo-600">Blog</span>
           </div>
-          <h1 className="text-xl font-semibold mb-6">Login</h1>
+
+          <h1 className="text-2xl font-semibold text-center mb-6 text-gray-700">
+            Login
+          </h1>
+
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="w-full p-2 mb-4 border rounded-md bg-dark"
+            className="w-full p-3 mb-4 border border-gray-300 rounded-md bg-gray-50 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500"
           >
             <option value="">Select Role</option>
             <option value="user">User</option>
@@ -74,32 +78,36 @@ function Login() {
           <div className="mb-4">
             <input
               type="email"
-              placeholder=" Your Email Address Name"
+              placeholder="Your Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-3 border border-gray-300 rounded-md bg-gray-50 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500 outline-none"
             />
           </div>
 
           <div className="mb-4">
             <input
               type="password"
-              placeholder=" Your Password"
+              placeholder="Your Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-3 border border-gray-300 rounded-md bg-gray-50 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500 outline-none"
             />
           </div>
 
-          <p className="text-center mb-4">
+          <p className="text-center mb-6 text-gray-600">
             New User?{" "}
-            <Link to="/register" className="text-blue-600">
-              Register Now{" "}
+            <Link
+              to="/register"
+              className="text-indigo-600 hover:underline font-medium"
+            >
+              Register Now
             </Link>
           </p>
+
           <button
             type="submit"
-            className="w-full p-2 bg-blue-500 hover:bg-blue-500 duration-300 rounded-md text-white"
+            className="w-full p-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-semibold transition duration-300 shadow-lg hover:shadow-xl"
           >
             Login
           </button>
