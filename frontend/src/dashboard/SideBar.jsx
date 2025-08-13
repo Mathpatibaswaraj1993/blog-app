@@ -68,7 +68,7 @@ function SideBar({ setComponent }) {
             <div className="text-center py-6">
               {profile.photo ? (
                 <img
-                  src={profile.photo?.url}
+                  src={profile.photo?.url?}
                   alt="User Profile"
                   className="w-24 h-24 rounded-full mx-auto mb-2"
                 />
